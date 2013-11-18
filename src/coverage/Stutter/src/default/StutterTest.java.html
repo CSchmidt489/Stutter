@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>StutterTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StutterTest (Nov 17, 2013 11:02:39 PM)</a> &gt; <a href="../../index.html" class="el_group">Stutter</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">default</a> &gt; <span class="el_source">StutterTest.java</span></div><h1>StutterTest.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.junit.Test;
+
+<span class="fc" id="L10">public class StutterTest {</span>
+<span class="fc" id="L11">	Stutter s = new Stutter();</span>
+	@Test
+	public void testIsDelimitNull(){
+<span class="fc" id="L14">		boolean result = Stutter.isDelimit((char)0);</span>
+<span class="fc" id="L15">		assertFalse(result);</span>
+		
+<span class="fc" id="L17">	}</span>
+	
+	@Test
+	public void testIsDelimitChar(){
+		
+<span class="fc" id="L22">		boolean result = Stutter.isDelimit('-');</span>
+<span class="fc" id="L23">		assertTrue(result);</span>
+		
+<span class="fc" id="L25">	}</span>
+	
+	@Test
+	public void testMainNoInfile() throws IOException{
+<span class="fc" id="L29">		String in = &quot;infile.txt&quot;;</span>
+<span class="fc" id="L30">		InputStream buf = new ByteArrayInputStream(in.getBytes());</span>
+<span class="fc" id="L31">		System.setIn(buf);</span>
+<span class="fc" id="L32">		Stutter.main(new String[] {});</span>
+		//assertTrue(true);
+		
+<span class="fc" id="L35">	}</span>
+	
+	@Test
+	public void testMainNullInput() throws IOException{
+<span class="fc" id="L39">		String in = &quot;repeat repeat - - repeat&quot;;</span>
+<span class="fc" id="L40">		InputStream buf = new ByteArrayInputStream(in.getBytes());</span>
+<span class="fc" id="L41">		System.setIn(buf);</span>
+<span class="fc" id="L42">		Stutter.main(new String[] {null});</span>
+		//assertTrue(true);
+<span class="fc" id="L44">	}</span>
+	
+	@Test
+	public void testMainFileInput() throws IOException{
+		//String in = &quot;infile.txt&quot;;
+		//InputStream buf = new ByteArrayInputStream(in.getBytes());
+		//System.setIn(buf);
+<span class="fc" id="L51">		String currentdir = System.getProperty(&quot;user.dir&quot;);</span>
+<span class="fc" id="L52">		Stutter.main(new String[] {currentdir + &quot;/src/infile.txt&quot;});</span>
+<span class="fc" id="L53">		assertTrue(true);</span>
+<span class="fc" id="L54">	}</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.3.201306030806</span>StutterTest (Nov 17, 2013 11:02:39 PM)</div></body></html>
